@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="16dp"
     tools:context=".MainActivity">
 
@@ -13,72 +12,77 @@
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:text="First Activity"
-        android:textSize="30sp"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="30sp"/>
 
-    <Button
-        android:layout_below="@+id/name"
-        android:id="@+id/callActivity"
-        android:layout_width="wrap_content"
+    <TableRow
+        android:id="@+id/row1"
         android:layout_height="wrap_content"
-        android:onClick="buttonMethods"
-        android:layout_margin="6dp"
-        android:text="Call Activity"/>
-    <Button
-        android:id="@+id/showToast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/callActivity"
-        android:layout_below="@+id/name"
-        android:layout_margin="6dp"
-        android:text="Show Toast"
-        android:onClick="buttonMethods" />
-    <Button
-        android:id="@+id/notify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/showToast"
-        android:layout_below="@+id/name"
-        android:layout_margin="6dp"
-        android:text="Notify"
-        android:onClick="buttonMethods" />
-    <Button
-        android:id="@+id/simpleDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/callActivity"
-        android:layout_margin="4dp"
-        android:text="Simple Dialog"
-        android:onClick="buttonMethods" />
-    <Button
-        android:id="@+id/customDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/simpleDialog"
-        android:layout_below="@+id/callActivity"
-        android:layout_margin="4dp"
-        android:text="Custom Dialog"
-        android:onClick="buttonMethods" />
-    <Button
-        android:id="@+id/openWeb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/customDialog"
-        android:layout_below="@+id/callActivity"
-        android:layout_margin="4dp"
-        android:text="Open Web"
-        android:onClick="buttonMethods" />
-    <LinearLayout
-        android:layout_below="@+id/simpleDialog"
         android:layout_width="match_parent"
-        android:layout_margin="12dp"
-        android:layout_height="match_parent">
-`
+        android:layout_margin="6dp">
+        <Button
+            android:id="@+id/callActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonMethods"
+            android:layout_column="1"
+            android:text="Call Activity"/>
+        <Button
+            android:id="@+id/showToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text="Show Toast"
+            android:onClick="buttonMethods" />
+        <Button
+            android:id="@+id/notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:text="Notify"
+            android:onClick="buttonMethods" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="6dp">
+        <Button
+            android:id="@+id/simpleDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:text="Simple Dialog"
+            android:onClick="buttonMethods" />
+        <Button
+            android:id="@+id/customDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text="Custom Dialog"
+            android:onClick="buttonMethods" />
+        <Button
+            android:id="@+id/openWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:text="Open Web"
+            android:onClick="buttonMethods" />
+    </TableRow>
+    <TableRow
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="6dp">
+        <Spinner
+            android:id="@+id/mySpinner"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_column="1"/>
+
         <ImageView
             android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
             android:src="@mipmap/logo"/>
-
-    </LinearLayout>
-</RelativeLayout>
+    </TableRow>
+</TableLayout>

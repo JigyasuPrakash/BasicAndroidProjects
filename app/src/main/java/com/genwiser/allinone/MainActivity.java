@@ -17,19 +17,29 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public int numb = 0;
     public static final int REQUEST_CODE = 100;
+    String[] country = {"--Select Country--","India","Nepal","Bhutan","USA","UK"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayAdapter a = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item,country);
+
+        Spinner s = findViewById(R.id.mySpinner);
+        s.setAdapter(a);
+        s.setOnItemSelectedListener(this);
     }
 
     public boolean onCreateOptionsMenu (Menu menu){
@@ -152,5 +162,15 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             Toast.makeText(this,intent.getStringExtra("message"),Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, country[position], Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        //On nothing selected
     }
 }
