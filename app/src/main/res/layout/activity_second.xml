@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity"
+    android:layout_margin="16dp">
+
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/name"
+        android:layout_margin="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second Activity"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/goBack"
+        android:layout_margin="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:text="Go Back"/>
+    <Button
+        android:id="@+id/asyncTask"
+        android:layout_margin="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/goBack"
+        android:text="Async Task"
+        android:onClick="buttonClicked"/>
+    <Button
+        android:id="@+id/database"
+        android:layout_margin="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/asyncTask"
+        android:text="Database"
+        android:onClick="buttonClicked"/>
+    <AutoCompleteTextView
+        android:id="@+id/autoText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/database"
+        android:hint="Fruits Name"
+        android:layout_margin="6dp"/>
+    <Button
+        android:id="@+id/startService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoText"
+        android:layout_margin="6dp"
+        android:text="Start Service"
+        android:onClick="buttonClicked"/>
+    <Button
+        android:id="@+id/stopService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/autoText"
+        android:layout_toRightOf="@+id/startService"
+        android:layout_margin="6dp"
+        android:text="Stop Service"
+        android:onClick="buttonClicked"/>
+    <Button
+        android:id="@+id/sms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:layout_below="@+id/autoText"
+        android:layout_toRightOf="@+id/stopService"
+        android:text="Send SMS"
+        android:onClick="buttonClicked"/>
+
+</RelativeLayout>
