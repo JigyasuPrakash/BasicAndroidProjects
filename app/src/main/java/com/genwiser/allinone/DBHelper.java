@@ -37,8 +37,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Cursor getData(int id){
+    public Cursor getData(){
         SQLiteDatabase database = this.getReadableDatabase();
-        return database.rawQuery("select * from "+TABLE_NAME+" where id="+id+"",null);
+        return database.rawQuery("select * from "+TABLE_NAME,null);
     }
 }

@@ -8,6 +8,7 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -92,11 +93,15 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
-    public void myDatabase(){
+    public void myDatabase() {
         DBHelper db;
         db = new DBHelper(this);
-        db.insertData("Ramu","123456879");
-        db.insertData("Shyam","987654321");
+        db.insertData("Ramu", "123456879");
+        db.insertData("Shyam", "987654321");
+        Cursor cursor = db.getData();
+        cursor.moveToFirst();
+        String data = cursor.getString(cursor.getColumnIndex("name"));
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
     }
 
     public void myAsyncTask() {

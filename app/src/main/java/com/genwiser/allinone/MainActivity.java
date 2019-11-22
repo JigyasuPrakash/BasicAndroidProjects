@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,9 +28,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    Button contextButton;
     public int numb = 0;
     public static final int REQUEST_CODE = 100;
-    String[] country = {"--Select Country--","India","Nepal","Bhutan","USA","UK"};
+    String[] country = {"-Select-","India","Nepal","Bhutan","USA","UK"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Spinner s = findViewById(R.id.mySpinner);
         s.setAdapter(a);
         s.setOnItemSelectedListener(this);
+
+        contextButton = findViewById(R.id.contextMenu);
+        registerForContextMenu(contextButton);
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo info){
+        super.onCreateContextMenu(menu,view,info);
+        menu.setHeaderTitle("Context Menu");
+        menu.add(0,view.getId(),0,"Option 1");
+        menu.add(0,view.getId(),0,"Option 2");
+        menu.add(0,view.getId(),0,"Option 3");
+        menu.add(0,view.getId(),0,"Option 4");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
+    @Override
     public boolean onCreateOptionsMenu (Menu menu){
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.my_menu,menu);
@@ -116,6 +139,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             case R.id.openWeb:
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://itsjigyasu.me"));
                 startActivity(intent);
+                break;
+
+            case R.id.camera:
+                Intent cameraOpen = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivity(cameraOpen);
                 break;
         }
     }
